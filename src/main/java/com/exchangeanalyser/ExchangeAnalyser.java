@@ -29,10 +29,10 @@ public class ExchangeAnalyser {
         LocalDateTime first = LocalDateTime.parse("2018-07-05T09:15:00");
         
         Stream<ExchangeEntryItem> logItemList = Stream.of(
-            new ExchangeEntryItem("BTC", LocalDateTime.parse("2018-07-05T09:15:00"), new Float("34.98f")),
-            new ExchangeEntryItem("BTC", LocalDateTime.parse("2018-07-05T11:58:00"), new Float("14.30f")),
-            new ExchangeEntryItem("BTC", LocalDateTime.parse("2018-07-05T15:02:00"), new Float("38.58f")),
-            new ExchangeEntryItem("BTC", LocalDateTime.parse("2018-07-05T09:19:00"), new Float("24.03f"))
+            new ExchangeEntryItem("BTC", LocalDateTime.parse("2018-07-05T09:15:00"), new Double("34.98")),
+            new ExchangeEntryItem("BTC", LocalDateTime.parse("2018-07-05T11:58:00"), new Double("14.30")),
+            new ExchangeEntryItem("BTC", LocalDateTime.parse("2018-07-05T15:02:00"), new Double("38.58")),
+            new ExchangeEntryItem("BTC", LocalDateTime.parse("2018-07-05T09:19:00"), new Double("24.03"))
         );
 
         return logItemList;

@@ -6,8 +6,6 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.toList;
-
 public class ExchangeProcessor {
 	private Stream<ExchangeEntryItem> data;
 	
@@ -24,7 +22,7 @@ public class ExchangeProcessor {
 		LocalDateTime ldt = LocalDateTime.now();
 		
 		
-		Object dataStore = data.sorted(Comparator.comparing(ExchangeEntryItem::getDatetime)).collect(toList());
+		Double[] dataStore = data.sorted(Comparator.comparing(ExchangeEntryItem::getDatetime)).map(x -> new Double(x.getPrice())).toArray(Double[]::new);
 		
 //		doProcessLogData().entrySet()
 //		.stream()
@@ -32,8 +30,33 @@ public class ExchangeProcessor {
 //																				 : o1.getOccurrences().compareTo(o2.getOccurrences())))
 //		.limit(this.limit)
 //		.collect(toList());
+		Double maxProfit = maxProfit(dataStore);
 		
-		return dataStore;
+		return maxProfit;
+	}
+	
+	public Double maxProfit(Double[] prices) {
+		if (prices.length < 1) {
+			return 0.0;
+		}
+		
+		Double maxDiff = 0.0;
+		Double localMin = prices[0];
+		Double localMax = localMin;
+		
+		for (Double price : prices) {
+			if (price > localMax) {
+				localMax = price;
+				Double localDiff = localMax - localMin;
+				if (localDiff > maxDiff) {
+					maxDiff = localDiff;
+				}
+			} else if (price < localMin) {
+				localMin = localMax = price;
+			}
+		}
+		
+		return maxDiff;
 	}
 	
 }

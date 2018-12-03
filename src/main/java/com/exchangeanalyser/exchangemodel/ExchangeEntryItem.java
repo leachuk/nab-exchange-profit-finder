@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 public class ExchangeEntryItem {
 	String currency;
 	LocalDateTime datetime;
-	Float price;
+	Double price;
 	
 	
-	public ExchangeEntryItem(String currency, LocalDateTime datetime, Float price) {
+	public ExchangeEntryItem(String currency, LocalDateTime datetime, Double price) {
 		this.currency = currency;
 		this.datetime = datetime;
 		this.price = price;
@@ -30,11 +30,11 @@ public class ExchangeEntryItem {
 		this.datetime = datetime;
 	}
 	
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 	
-	public void setPrice(Float price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 }
