@@ -2,40 +2,36 @@ package com.exchangeanalyser.exchangeprocessor;
 
 import com.exchangeanalyser.exchangemodel.ExchangeEntryItem;
 
-import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ExchangeProcessor {
 	private Stream<ExchangeEntryItem> data;
+	private List<ExchangeEntryItem> processedData;
 	
 	public ExchangeProcessor(Stream<ExchangeEntryItem> data) {
 		this.data = data;
+		this.doProcessData();
 	}
 	
-	public ExchangeProcessor(Stream<ExchangeEntryItem> data, int limit, int pageCount, boolean isDescOrder) {
-		this.data = data;
+	public void doProcessData() {
+		this.processedData = data.sorted(Comparator.comparing(ExchangeEntryItem::getDatetime)).collect(Collectors.toList());
 	}
 	
-	public Object doProcessExchangeData() {
-		//Map<String, List<ExchangeEntryItem>> dataStore = data.collect(groupingBy(ExchangeEntryItem::getCurrency));
-		LocalDateTime ldt = LocalDateTime.now();
+	public Double getMaxProfit(String currency) {
 		
+		Double[] dataStore = toStream(processedData)
+												 .filter(e -> e.getCurrency().equals(currency))
+												 .sorted(Comparator.comparing(ExchangeEntryItem::getDatetime))
+												 .map(x -> new Double(x.getPrice()))
+												 .toArray(Double[]::new);
 		
-		Double[] dataStore = data.sorted(Comparator.comparing(ExchangeEntryItem::getDatetime)).map(x -> new Double(x.getPrice())).toArray(Double[]::new);
-		
-//		doProcessLogData().entrySet()
-//		.stream()
-//		.sorted(comparingByValue((o1, o2) -> this.isDescOrder ? o2.getOccurrences().compareTo(o1.getOccurrences())
-//																				 : o1.getOccurrences().compareTo(o2.getOccurrences())))
-//		.limit(this.limit)
-//		.collect(toList());
-		Double maxProfit = maxProfit(dataStore);
-		
-		return maxProfit;
+		return getMaxDifference(dataStore);
 	}
 	
-	public Double maxProfit(Double[] prices) {
+	private Double getMaxDifference(Double[] prices) {
 		if (prices.length < 1) {
 			return 0.0;
 		}
@@ -59,5 +55,8 @@ public class ExchangeProcessor {
 		return maxDiff;
 	}
 	
+	private static <T> Stream<T> toStream (List<T> list) {
+		return list.stream();
+	}
 }
 	
