@@ -1,13 +1,17 @@
 import * as dotenv from 'dotenv';
 import express from 'express';
-import ExpressRotuer from './express.router';
+import ExpressRouter from './express.router';
 
 dotenv.config();
 
+const port = 8000;
 const app = express();
-const expressRoutes = new ExpressRotuer(app);
+app.set('view engine', 'pug');
+app.set('views', './src/views');
+
+const expressRoutes = new ExpressRouter(app);
 expressRoutes.init();
 
-app.listen(process.env.PORT, () => {
-  console.log(`Express server app listening on port ${process.env.PORT}!`);
+app.listen(port, () => {
+  console.log(`Express server app listening on port ${port}!`);
 });
