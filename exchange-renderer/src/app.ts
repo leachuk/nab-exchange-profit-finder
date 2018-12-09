@@ -18,6 +18,10 @@ app.use(express.static(path.join(__dirname, '../src')));
 const expressRoutes = new ExpressRouter(app);
 expressRoutes.init();
 
+//get value passed from commandline option
+const argv = require('yargs').argv;
+console.log(JSON.parse(argv.exchangejson));
+
 app.listen(port, () => {
   console.log(`Express server app listening on port ${port}!`);
 });

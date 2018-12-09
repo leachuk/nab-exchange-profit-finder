@@ -10,6 +10,10 @@ To run this project first you need to run following command
     npm install          <= install all the npm Dependencies
     npm start            <= It will run project on port 8000.
 ```
+Or using `ts-node` to run directly
+```$xslt
+  ts-node src/app.ts --exchangejson='{"foo": "bar"}'
+``` 
 
 ## Usage
 Once running, open a browser with
