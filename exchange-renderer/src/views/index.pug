@@ -5,9 +5,10 @@ append body
         h1= title
         p Welcome to #{title}
 
-        ul
-            each val in listinfo.length ? listinfo : ['There are no values']
-                li= val
+        if listinfo
+            ul
+                each val in listinfo.length ? listinfo : ['There are no values']
+                    li= val
 
         +alert-info("This is a sample info alert.")
         +navbar("Project name","dropdown_menu")
