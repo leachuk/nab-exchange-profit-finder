@@ -1,7 +1,9 @@
 package com.exchangeanalyser.exchangeprocessor;
 
 import com.exchangeanalyser.exchangemodel.ExchangeEntryItem;
+import com.google.gson.Gson;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,19 +18,25 @@ public class ExchangeProcessor {
 		this.doProcessData();
 	}
 	
-	public void doProcessData() {
-		this.processedData = data.sorted(Comparator.comparing(ExchangeEntryItem::getDatetime)).collect(Collectors.toList());
-	}
-	
-	public Double getMaxProfit(String currency) {
+	public Double getMaxProfit(String currency, LocalDate date) {
 		
 		Double[] dataStore = toStream(processedData)
-												 .filter(e -> e.getCurrency().equals(currency))
+												 .filter(e -> e.getCurrency().equals(currency) & e.getDatetime().toLocalDate().equals(date))
 												 .sorted(Comparator.comparing(ExchangeEntryItem::getDatetime))
 												 .map(x -> new Double(x.getPrice()))
 												 .toArray(Double[]::new);
 		
 		return getMaxDifference(dataStore);
+	}
+	
+	public String toJson() {
+		Gson gson = new Gson();
+		
+		return gson.toJson(processedData);
+	}
+	
+	private void doProcessData() {
+		this.processedData = data.sorted(Comparator.comparing(ExchangeEntryItem::getDatetime)).collect(Collectors.toList());
 	}
 	
 	private Double getMaxDifference(Double[] prices) {

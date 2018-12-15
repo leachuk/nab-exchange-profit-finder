@@ -1,0 +1,12 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.nab</groupId>
+  <artifactId>nab-exchange-profit-finder</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>exchange-analyser</module>
+  </modules>
+</project>
