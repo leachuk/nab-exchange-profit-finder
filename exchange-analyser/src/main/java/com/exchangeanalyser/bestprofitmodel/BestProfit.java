@@ -1,5 +1,7 @@
 package com.exchangeanalyser.bestprofitmodel;
 
+import com.google.gson.Gson;
+
 import java.time.LocalDateTime;
 
 public class BestProfit {
@@ -56,5 +58,11 @@ public class BestProfit {
 	
 	public void setProfit(Double profit) {
 		this.profit = profit;
+	}
+	
+	public String toJson() {
+		Gson gson = new Gson();
+		
+		return gson.toJson(this);
 	}
 }

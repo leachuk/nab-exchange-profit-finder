@@ -17,13 +17,16 @@ public class ExchangeAnalyser {
         ExchangeProcessor exchangeProcessor = new ExchangeProcessor(getSampleData());
     
         Double maxBTCProfit = exchangeProcessor.getMaxProfit("BTC", getDate).getProfit();
-        System.out.println(String.format("BTC profit[%1$,.2f]", maxBTCProfit));
+        String maxBTCJson = exchangeProcessor.getMaxProfit("BTC", getDate).toJson();
+        System.out.println(String.format("BTC profit[%1$,.2f], json[%2$s]", maxBTCProfit, maxBTCJson));
     
         Double maxETCProfit = exchangeProcessor.getMaxProfit("ETC", getDate).getProfit();
-        System.out.println(String.format("ETC profit[%1$,.2f]", maxETCProfit));
+        String maxETCJson = exchangeProcessor.getMaxProfit("ETC", getDate).toJson();
+        System.out.println(String.format("ETC profit[%1$,.2f], json[%2$s]", maxETCProfit, maxETCJson));
     
         Double maxLTCProfit = exchangeProcessor.getMaxProfit("LTC", getDate).getProfit();
-        System.out.println(String.format("LTC profit[%1$,.2f]", maxLTCProfit));
+        String maxLTCJson = exchangeProcessor.getMaxProfit("LTC", getDate).toJson();
+        System.out.println(String.format("LTC profit[%1$,.2f], json[%2$s]", maxLTCProfit, maxLTCJson));
         
         System.out.println(String.format("JSON output: %s", exchangeProcessor.toJson()));
         
