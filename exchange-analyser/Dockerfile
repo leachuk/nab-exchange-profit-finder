@@ -1,8 +1,16 @@
 FROM openjdk:12-jdk-alpine
 
+ARG JAR_FILE
+# Becuase you can't use ARG in ENTRYPOINT, so need to define as ENV
+ENV jar=$JAR_FILE
+
 RUN mkdir -p /app/nab
 
-//todo: convert to use jar with dependencies
-COPY target/production/nab-exchange-profit-finder /app/nab/
+ADD target/${JAR_FILE} /app/nab/${JAR_FILE}
 
-ENTRYPOINT ["java", "-cp", "/app/nab", "com.exchangeanalyser.ExchangeAnalyser"]
+RUN echo ${JAR_FILE}
+
+# Both ARG and ENV are not expanded in ENTRYPOINT or CMD, so have to use plaintext version so $jar can be read
+ENTRYPOINT java -jar /app/nab/$jar
+
+
