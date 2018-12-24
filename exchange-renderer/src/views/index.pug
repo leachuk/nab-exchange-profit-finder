@@ -10,6 +10,13 @@ append body
                 each val in listinfo.length ? listinfo : ['There are no values']
                     li= val
 
+        if data
+            each result in data.length ? data : ['No data available']
+                for item in result
+                    div Currency #{JSON.stringify(item.currency)}
+                    script.
+                        console.log(!{JSON.stringify(item)})
+
         +alert-info("This is a sample info alert.")
         +navbar("Project name","dropdown_menu")
         +navbar("Project name","dropdown_menu","inverse")

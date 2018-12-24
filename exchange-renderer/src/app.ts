@@ -18,8 +18,8 @@ const argv = require('yargs').argv;
 console.log(JSON.parse(argv.exchangejson));
 
 app.get('/', function (req,res,next) {
-    //var data = { title: 'Hey', message: 'Hello there!', listinfo: ["foo1", "bar1", "zoo1"] };
-    res.render('index', JSON.parse(argv.exchangejson));
+    var data = JSON.parse(argv.exchangejson)
+    res.render('index', {"data" : data});
 })
 
 app.listen(port, () => {
