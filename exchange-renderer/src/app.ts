@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import moment from 'moment';
 
 dotenv.config();
 
@@ -12,6 +13,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'pug');
 app.set('views', './src/views');
 app.use(express.static(path.join(__dirname, '../src')));
+
+//setup locally available resources for use in template
+app.locals.moment = moment;
 
 //get value passed from commandline option
 const argv = require('yargs').argv;

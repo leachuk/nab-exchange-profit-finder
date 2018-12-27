@@ -3,19 +3,19 @@ extends ../../node_modules/pug-bootstrap/layouts/starter
 append body
     .container
         h1= title
-        p Welcome to #{title}
-
-        if listinfo
-            ul
-                each val in listinfo.length ? listinfo : ['There are no values']
-                    li= val
 
         if data
+        div.row
             each result in data.length ? data : ['No data available']
                 for item in result
-                    div Currency #{JSON.stringify(item.currency)}
+                    div.col-lg-4
+                        div.panel.panel-primary
+                            div.panel-heading
+                                h3.panel-title #{item.currency}: #{JSON.stringify(item.buyDatetime.date.year)}-#{moment(JSON.stringify(item.buyDatetime.date.month)).format('MMM')}-#{JSON.stringify(item.buyDatetime.date.day)}
+                            div.panel-body Foo balalksDJ alkdsjaSDLakd aksDLJ DASLKDJaslkdj d alksDJasd laskDJ SA laskdjalksDJ Laksdj
                     script.
                         console.log(!{JSON.stringify(item)})
+                        console.log(!{JSON.stringify(item.buyDatetime)})
 
         +alert-info("This is a sample info alert.")
         +navbar("Project name","dropdown_menu")
