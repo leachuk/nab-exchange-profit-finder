@@ -13,27 +13,17 @@ append body
                             div.panel-heading
                                 h3.panel-title #{item.currency}: #{JSON.stringify(item.buyDatetime.date.year)}-#{moment(JSON.stringify(item.buyDatetime.date.month)).format('MMM')}-#{JSON.stringify(item.buyDatetime.date.day)}
                             div.panel-body Foo balalksDJ alkdsjaSDLakd aksDLJ DASLKDJaslkdj d alksDJasd laskDJ SA laskdjalksDJ Laksdj
+                                table.table
+                                    thead
+                                        th.text-center Buy
+                                        th.text-center Sell
+                                    tbody
+                                        tr
+                                            td.text-center #{item.buyPrice}
+                                            td.text-center #{item.sellPrice}
+                                        tr
+                                            td.text-center #{item.buyDatetime.time.hour}:#{item.buyDatetime.time.minute}
+                                            td.text-center #{item.sellDatetime.time.hour}:#{item.sellDatetime.time.minute}
                     script.
                         console.log(!{JSON.stringify(item)})
                         console.log(!{JSON.stringify(item.buyDatetime)})
-
-        +alert-info("This is a sample info alert.")
-        +navbar("Project name","dropdown_menu")
-        +navbar("Project name","dropdown_menu","inverse")
-        +navbar("Project name","dropdown_menu")
-            +nav_item("index.html","active") Home
-            +nav_item("about.html") About
-            +nav_item("contact.html") Contact
-        +navbar("Project name","dropdown_menu")
-            +nav_item("index.html","active") Home
-            +nav_item("about.html") About
-            +nav_item("contact.html") Contact
-            +nav_item_dropdown("#")(label="Dropdown")
-                +nav_item("#") Action
-                +nav_item("#") Another Action
-                +nav_item("#") Something else here
-                +nav_divider
-                +nav_header Nav header
-                +nav_item("#") Separated link
-                +nav_item("#") One more separated link
-    h1 #{message}
