@@ -2,7 +2,7 @@ extends ../../node_modules/pug-bootstrap/layouts/starter
 
 append body
     .container
-        h1= title
+        h1 NAB Exchange Profit Maximiser
 
         if data
         div.row
@@ -11,7 +11,7 @@ append body
                     div.col-lg-4
                         div.panel.panel-primary
                             div.panel-heading
-                                h3.panel-title #{item.currency}: #{JSON.stringify(item.buyDatetime.date.year)}-#{moment(JSON.stringify(item.buyDatetime.date.month)).format('MMM')}-#{JSON.stringify(item.buyDatetime.date.day)}
+                                h3.panel-title #{item.currency}: #{JSON.stringify(item.buyDatetime.date.year)}-#{moment(item.buyDatetime.date.month).format('MMM')}-#{JSON.stringify(item.buyDatetime.date.day)}
                             div.panel-body
                                 table.table
                                     thead
