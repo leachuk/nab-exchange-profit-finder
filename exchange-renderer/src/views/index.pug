@@ -5,28 +5,28 @@ append body
 
         if data
         div.row
-            each result in data.length ? data : ['No data available']
-                for item in result
-                    div.col-lg-4
-                        div.panel.panel-primary
-                            div.panel-heading
-                                h3.panel-title #{item.currency}: #{JSON.stringify(item.buyDatetime.date.year)}-#{moment(item.buyDatetime.date.month).format('MMM')}-#{JSON.stringify(item.buyDatetime.date.day)}
-                            div.panel-body
-                                table.table
-                                    thead
-                                        th(width='50')
-                                        th.text-center Buy
-                                        th.text-center Sell
-                                    tbody
-                                        tr
-                                            th.text-center(width='50') Price
-                                            td.text-center(width='150') #{item.buyPrice}
-                                            td.text-center #{item.sellPrice}
-                                        tr
-                                            th.text-center(width='50') Time
-                                            td.text-center(width='150') #{item.buyDatetime.time.hour}:#{item.buyDatetime.time.minute}
-                                            td.text-center #{item.sellDatetime.time.hour}:#{item.sellDatetime.time.minute}
-                            div.panel-footer!=  '<strong>Profit:</strong> ' + item.profit.toFixed(2)
-                    script.
-                        console.log(!{JSON.stringify(item)})
-                        console.log(!{JSON.stringify(item.buyDatetime)})
+            each item in data.length ? data : ['No data available']
+                script.
+                    console.log(!{JSON.stringify(item)})
+
+                div.col-lg-4
+                    div.panel.panel-primary
+                        div.panel-heading
+                            h3.panel-title #{item.currency}: #{JSON.stringify(item.buyDatetime.date.year)}-#{moment(item.buyDatetime.date.month).format('MMM')}-#{JSON.stringify(item.buyDatetime.date.day)}
+                        div.panel-body
+                            table.table
+                                thead
+                                    th(width='50')
+                                    th.text-center Buy
+                                    th.text-center Sell
+                                tbody
+                                    tr
+                                        th.text-center(width='50') Price
+                                        td.text-center(width='150') #{item.buyPrice}
+                                        td.text-center #{item.sellPrice}
+                                    tr
+                                        th.text-center(width='50') Time
+                                        td.text-center(width='150') #{item.buyDatetime.time.hour}:#{item.buyDatetime.time.minute}
+                                        td.text-center #{item.sellDatetime.time.hour}:#{item.sellDatetime.time.minute}
+                        div.panel-footer!=  '<strong>Profit:</strong> ' + item.profit.toFixed(2)
+

@@ -29,3 +29,8 @@ app.get('/', function (req,res,next) {
 app.listen(port, () => {
   console.log(`Express server app listening on port ${port}!`);
 });
+
+process.on('SIGINT', function() {
+    console.log("Exiting app")
+    process.exit();
+});
