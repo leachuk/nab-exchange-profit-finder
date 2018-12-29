@@ -21,6 +21,18 @@ Once running, open a browser with
 http://localhost:8000
 ```
 
+## Docker Usage
+Build docker image with 
+```bash
+docker build -t nab-exchange-renderer .
+```
+
+To create a running container with sample `exchangejson` data
+```bash
+docker run -p 8000:8000 -d --name nab-renderer nab-exchange-renderer --exchangejson='[{"currency":"BTC","buyDatetime":{"date":{"year":2018,"month":7,"day":5},"time":{"hour":9,"minute":15,"second":0,"nano":0}},"buyPrice":34.98,"sellDatetime":{"date":{"year":2018,"month":7,"day":5},"time":{"hour":12,"minute":30,"second":0,"nano":0}},"sellPrice":37.01,"profit":2.030000000000001},{"currency":"ETC","buyDatetime":{"date":{"year":2018,"month":7,"day":5},"time":{"hour":9,"minute":15,"second":0,"nano":0}},"buyPrice":34.98,"sellDatetime":{"date":{"year":2018,"month":7,"day":5},"time":{"hour":12,"minute":30,"second":0,"nano":0}},"sellPrice":37.01,"profit":2.030000000000001}]'
+```
+Then open [http://localhost:8000](http://localhost:8000) in a browser.
+
 ## License
 
 MIT
