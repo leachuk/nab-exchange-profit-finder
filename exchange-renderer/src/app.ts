@@ -19,7 +19,8 @@ app.locals.moment = moment;
 
 //get value passed from commandline option
 const argv = require('yargs').argv;
-console.log(JSON.parse(argv.exchangejson));
+console.log(argv);
+//console.log(JSON.parse(argv.exchangejson));
 
 app.get('/', function (req,res,next) {
     var data = JSON.parse(argv.exchangejson)
