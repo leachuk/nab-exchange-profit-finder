@@ -1,4 +1,7 @@
 #!/bin/sh
 set -e
 
-exec "$@"
+echo "$@"
+read -p "" arg; echo $arg;
+
+exec "$@" --exchangejson=$arg
