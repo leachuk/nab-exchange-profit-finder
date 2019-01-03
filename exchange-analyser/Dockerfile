@@ -1,4 +1,4 @@
-FROM openjdk:12-jdk-alpine
+FROM openjdk:8-jdk-alpine
 
 ARG JAR_FILE
 # Becuase you can't use ARG in ENTRYPOINT, so need to define as ENV
