@@ -34,9 +34,9 @@ mvn clean package
 
 Once complete, you will have docker image `nab-exchange-analyser:<version>` available to run:
 ```bash
-$ docker ps --all
-CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                     PORTS               NAMES
-f32cb9e6dde2        nab-exchange-analyser:0.0.1-SNAPSHOT   "/bin/sh -c 'java -j…"   4 seconds ago       Exited (0) 3 seconds ago                       nab-test
+$ docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED              SIZE
+nab-exchange-analyser   0.0.1-SNAPSHOT      2f56ffc048da        About a minute ago   338MB
 ```
 
 ## To run
