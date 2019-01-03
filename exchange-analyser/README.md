@@ -41,6 +41,6 @@ nab-exchange-analyser   0.0.1-SNAPSHOT      2f56ffc048da        About a minute a
 
 ## To run
 ```bash
-docker run --name nab-test nab-exchange-analyser:0.0.1-SNAPSHOT
+docker run --name nab-test --rm nab-exchange-analyser:0.0.1-SNAPSHOT
 ```
 
