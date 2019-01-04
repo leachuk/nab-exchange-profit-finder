@@ -11,10 +11,16 @@ public class ExchangeAnalyser {
     
     public static void main(String[] args) {
         LocalDate getDate = LocalDate.parse("2018-07-05");
-        
+    
         ExchangeProcessor exchangeProcessor = new ExchangeProcessor(getSampleData());
+    
+        String maxProfitBTCJson = exchangeProcessor.getMaxProfit("BTC", getDate).toJson();
+        String maxProfitETCJson = exchangeProcessor.getMaxProfit("ETC", getDate).toJson();
+        String maxProfitLTCJson = exchangeProcessor.getMaxProfit("LTC", getDate).toJson();
         
-        System.out.println(exchangeProcessor.toJson()); //output results to stdout
+        System.out.println("["+ maxProfitBTCJson + ","
+                              + maxProfitETCJson + ","
+                              + maxProfitLTCJson + "]"); //output results to stdout
     }
 
     private static Stream<ExchangeEntryItem> getSampleData(){

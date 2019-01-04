@@ -2,6 +2,6 @@
 set -e
 
 echo "$@"
-read -p "" arg; echo $arg;
+read -p "" arg; printf '%s\n' "$arg";
 
 exec "$@" --exchangejson=$arg

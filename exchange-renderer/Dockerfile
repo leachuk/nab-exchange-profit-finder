@@ -16,5 +16,3 @@ ADD src /app/nab/src/
 EXPOSE 8000
 
 ENTRYPOINT ["/app/nab/run.sh", "ts-node", "src/app.ts"]
-
-CMD []
