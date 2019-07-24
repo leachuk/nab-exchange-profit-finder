@@ -34,9 +34,9 @@ public class ExchangeProcessor {
 	
 	public List<ExchangeEntryItem> getFilteredExchangeData(String currency, LocalDate date) {
 		List<ExchangeEntryItem> dataList = toStream(processedData)
-																			 .filter(e -> e.getCurrency().equals(currency) & e.getDatetime().toLocalDate().equals(date))
-																			 .sorted(Comparator.comparing(ExchangeEntryItem::getDatetime))
-																			 .collect(Collectors.toList());
+						   .filter(e -> e.getCurrency().equals(currency) & e.getDatetime().toLocalDate().equals(date))
+						   .sorted(Comparator.comparing(ExchangeEntryItem::getDatetime))
+						   .collect(Collectors.toList());
 		
 		return dataList;
 	}
