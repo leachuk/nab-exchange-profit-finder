@@ -1,4 +1,4 @@
-#Exchange Analyser
+# Exchange Analyser
 A java class which takes a list of exchange trades in the form of:
 ```
 <currency_type> <trade_timestamp> <trade_value>
